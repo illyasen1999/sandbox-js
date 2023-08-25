@@ -1,3 +1,5 @@
+🟢 REMEMBER TO ALWAYS UPDATE YOUR GITHUB REPO 🟢
+
 Modern Javascript(Videos): 
     - Brad Traversy: https://www.youtube.com/watch?v=BI1o2H9z9fo
     - ByteGrad: https://www.youtube.com/watch?v=p4Y7sZwHGS8&list=PLK5U0tyd34tDLOnqdh-EiMBRl9C9cVpPJ&index=1
