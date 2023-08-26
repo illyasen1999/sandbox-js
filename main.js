@@ -155,12 +155,13 @@ console.log(`${currentDay}, ${currentMonth} ${date}, ${year}`)
 // Array
 let arrayForm = document.querySelector(".array-form")
 let arrayInput = document.getElementById("array-value");
-let addArrayValue = document.querySelector(".add-array-value");
+let addArrayValueButton = document.querySelector(".add-array-value");
+let removeArrayItemsButton = document.querySelector(".remove-items");
 let arrayOutput = document.querySelector(".array-list");
 let arrayLengthIndicator = document.querySelector(".length");
 let arrayOutputList = [];
 
-arrayLengthIndicator.innerHTML = "0";
+arrayLengthIndicator.innerHTML = arrayOutputList.length;
 
 let getInputValue = (e) => {
     e.preventDefault();
@@ -172,6 +173,7 @@ let getInputValue = (e) => {
     let li = document.createElement("li");
     li.setAttribute("class", "array-item");
     arrayOutputList.push(inputValue);
+    // arrayOutputList.reverse();
     let arrayLengthValue = arrayOutputList.length;
 
 
@@ -185,15 +187,39 @@ let getInputValue = (e) => {
     // })
 
     let index = arrayOutputList.indexOf(inputValue);
-    arrayValueStructure = `${index}: ${capTextFunc(inputValue)}`;
+    arrayValueStructure = `${index}: ${capTextFunc(inputValue)}s`;
     li.innerHTML = arrayValueStructure;
     arrayOutput.appendChild(li);
     arrayLengthIndicator.innerHTML = arrayLengthValue;
 
     console.log(arrayOutputList);
+    // console.log(arrayOutputList.shift());
     arrayForm.reset();
 }
 
-// 🟡 Maybe add a remove item function
-addArrayValue.addEventListener("click", getInputValue);
+addArrayValueButton.addEventListener("click", getInputValue);
+
+let removeListItems = () => {
+    arrayOutput.innerHTML = "";
+    console.log("List Items Removed.");
+}
+
+let removeItems = () => {
+    if(arrayOutputList < 1) {
+        console.log("No items to be removed");
+    }
+    arrayOutputList.forEach(() => {
+        arrayOutputList.splice(0, arrayOutputList.length);
+        removeListItems();
+        console.log(arrayOutputList);
+        console.log("Removed Items.");
+    });
+
+    arrayLengthIndicator.innerHTML = arrayOutputList.length;
+}
+
+removeArrayItemsButton.addEventListener("click", removeItems);
+
+// TODO: Maybe create a Glassmorphism Profile Card Generator using objects. Check img for idea illustration
+
 
