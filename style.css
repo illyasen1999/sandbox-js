@@ -4,6 +4,15 @@
     /* Colors */
     --light-color: #ffffff;
     --dark-color: #000000;
+    --purple-color: #D67BFF;
+    --pink-color: #FFB6D9;
+    --yellow-color: #FEFFAC;
+    --mint-color: #45FFCA;
+    --react-blue: #149eca;
+    --twitter-color: rgba(93, 168, 220);
+    --linikedin-color: rgba(14, 118, 168);
+    --azure-color: #F0FFFF;
+    --honey-dew: #F0FFF0;
 
     /* Font Family */
     --bricolage-font: 'Bricolage Grotesque', sans-serif;
@@ -131,6 +140,68 @@ ul, li, a {
     color: var(--light-color);
 }
 
+.inner-box {
+    text-align: center;
+}
+
+.glass-card-gen-box {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    align-items: center;
+    font-size: 18px;
+}
+
+.glass-card {
+    /* background: rgb(214,123,255);
+    background: linear-gradient(40deg, rgba(214,123,255,1) 39%, rgba(69,255,202,1) 85%);  */
+    background: rgb(214,123,255);
+    background: linear-gradient(330deg, rgba(214,123,255,1) 52%, rgba(69,255,202,1) 98%); 
+    /* background: rgb(101,226,214);
+    background: linear-gradient(330deg, rgba(101,226,214,1) 0%, rgba(214,123,255,1) 50%, rgba(69,255,202,1) 100%);  */
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 6px );
+    -webkit-backdrop-filter: blur( 6px );
+    border-radius: 10px;
+    width: 300px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.profile-img {
+    width: 70px;
+    border: 3px solid var(--yellow-color);
+    border-radius: 50px;
+}
+
+.socials {
+    display: flex;
+    margin: 5px 10px;
+    gap: 2rem;
+}
+
+.fa-twitter {
+    color: var(--twitter-color);
+}
+
+.fa-github {
+    color: var(--dark-color);
+}
+
+.fa-linkedin {
+    color: var(--linikedin-color);
+}
+
+.fa-link {
+    color: var(--react-blue);
+}
+
+.website, .sc-link, .person-name, .job {
+    color: var(--honey-dew);
+}
 
 @media screen and (max-width: 800px) {
     input, button {
@@ -140,5 +211,11 @@ ul, li, a {
     .current-date-time {
         width: 60%;
         padding: 5px 10px;
+    }
+
+    .glass-card-gen-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }

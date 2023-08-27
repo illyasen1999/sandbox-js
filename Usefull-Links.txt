@@ -1,0 +1,22 @@
+Glassmorphism Generator: 
+- https://hype4.academy/tools/glassmorphism-generator
+
+Illustrate ideas here: 
+- https://excalidraw.com/
+
+Design inspirations:
+- https://landingfolio.com/
+- https://godly.website/
+- https://dribbble.com/
+- https://headlessui.com/
+- https://uidesigndaily.com/
+- https://www.awwwards.com/
+- https://www.siteinspire.com/
+
+BEM Naming Convention: 
+- https://getbem.com/
+
+Colors: 
+- https://htmlcolorcodes.com/
+- https://colorhunt.co/
+- https://coolors.co/

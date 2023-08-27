@@ -10,8 +10,6 @@ https://developer.mozilla.org/en-US/
 WebDevSimplified List of topics to learn Javascript:
 - https://javascriptsimplified.com/beginner-table-of-contents/
 
-Illustrate ideas here: https://excalidraw.com/
-
 Book: JavaScript: The Good Parts
 
 TODO: Work on Promises and Async/Await 

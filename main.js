@@ -35,11 +35,11 @@ button.addEventListener("click", getText);
 
 
 // Testing for capitalization
-let myName = "illyasen";
+let testName = "Test Name";
 
 // let capName = `${myName.charAt(0).toUpperCase()}${myName.slice(1, myName.length)}`
 
-console.log(`Capitalized: ${capTextFunc(myName)}`);
+console.log(`Capitalized: ${capTextFunc(testName)}`);
 
 // Random Number Generator
 let randNumOutput = document.querySelector(".rand-num-output");
@@ -220,7 +220,7 @@ let removeItems = () => {
 
 removeArrayItemsButton.addEventListener("click", removeItems);
 
-// TODO: Maybe create a Glassmorphism Profile Card Generator using objects. Check img for idea illustration
+// TODO: Create a Glassmorphism Profile Card Generator using objects. Check /img for idea illustration. Get idea from https://github.com/illyasen1999/Illyasen-Periodic-Table
 
 let personInfo = {
     myName: "Illyasen",
@@ -235,6 +235,11 @@ let personInfo = {
     },
     introduce: () => {
         console.log(`Hello im ${personInfo.myName}`)
+    },
+    nestObj: {
+        nestOne: {
+            nestTwo: "Two level nesting?"
+        }
     }
 }
 
@@ -247,3 +252,17 @@ let myProgrammingLanguages = () => {
 myProgrammingLanguages(); // prints out programming languages
 
 personInfo.introduce();
+
+personInfo.myName = "Illy";
+
+personInfo.introduce();
+
+personInfo.address.houseNumber = "#991"
+
+let { age, gender, address: {houseNumber}, address: {city} } = personInfo;
+
+console.log(`Age: ${age}, Gender: ${gender}, House Number: ${houseNumber}, City: ${city}`);
+
+let {nestObj:{ nestOne: { nestTwo }}} = personInfo;
+
+console.log(nestTwo)
