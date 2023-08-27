@@ -35,7 +35,7 @@ button.addEventListener("click", getText);
 
 
 // Testing for capitalization
-let myName = "mikhail";
+let myName = "illyasen";
 
 // let capName = `${myName.charAt(0).toUpperCase()}${myName.slice(1, myName.length)}`
 
@@ -187,7 +187,7 @@ let getInputValue = (e) => {
     // })
 
     let index = arrayOutputList.indexOf(inputValue);
-    arrayValueStructure = `${index}: ${capTextFunc(inputValue)}s`;
+    arrayValueStructure = `${index}: ${capTextFunc(inputValue)}`;
     li.innerHTML = arrayValueStructure;
     arrayOutput.appendChild(li);
     arrayLengthIndicator.innerHTML = arrayLengthValue;
@@ -222,4 +222,28 @@ removeArrayItemsButton.addEventListener("click", removeItems);
 
 // TODO: Maybe create a Glassmorphism Profile Card Generator using objects. Check img for idea illustration
 
+let personInfo = {
+    myName: "Illyasen",
+    age: 99,
+    gender: "X86-64",
+    canCode: true,
+    languages: ["HTML", "CSS", "Javascript"],
+    address: {
+        houseNumber: "#999",
+        city: "Javascript",
+        nation: "Vanilla Javascript"
+    },
+    introduce: () => {
+        console.log(`Hello im ${personInfo.myName}`)
+    }
+}
 
+let myProgrammingLanguages = () => {
+    personInfo.languages.forEach((language, key) => {
+        console.log(`${key + 1}: ${language}`);
+    })
+}
+
+myProgrammingLanguages(); // prints out programming languages
+
+personInfo.introduce();
