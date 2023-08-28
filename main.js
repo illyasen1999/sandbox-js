@@ -265,4 +265,4 @@ console.log(`Age: ${age}, Gender: ${gender}, House Number: ${houseNumber}, City:
 
 let {nestObj:{ nestOne: { nestTwo }}} = personInfo;
 
-console.log(nestTwo)
+console.log(nestTwo);

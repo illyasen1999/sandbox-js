@@ -13,6 +13,9 @@
     --linikedin-color: rgba(14, 118, 168);
     --azure-color: #F0FFFF;
     --honey-dew: #F0FFF0;
+    --start-blue: #0080ef;
+    --end-blue: #00dad9;
+    --start-end-blue: linear-gradient(330deg, var(--start-blue) 52%, var(--end-blue) 98%);
 
     /* Font Family */
     --bricolage-font: 'Bricolage Grotesque', sans-serif;
@@ -34,6 +37,10 @@ body {
 
 input, button {
     width: 13%;
+}
+
+button {
+    cursor: pointer;
 }
 
 ul, li, a {
@@ -142,6 +149,47 @@ ul, li, a {
 
 .inner-box {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.card-form {
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 0.50rem;
+    border: 3px solid var(--react-blue);
+    border-radius: 10px;
+    padding: 20px 30px;
+}
+
+/* 🟡 Linear Gradient box shadow using --start-end-blue */
+/* 🟡 animation after focus  */
+.card-form:hover {
+    border: 3px solid transparent;
+    box-shadow: 5px 5px 80px var(--react-blue);
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.25s;
+}
+
+.card-form .input-field {
+    width: 100%;
+}
+
+.card-submit {
+    width: 200px;
+    color: var(--light-color);
+    background-color: var(--dark-color);
+    border-radius: 5px;
+    border: 1.25px solid var(--react-blue);
+}
+
+.card-submit:hover {
+    color: var(--dark-color);
+    background-color: var(--react-blue);
+    background: linear-gradient(330deg, var(--start-blue) 52%, var(--end-blue) 98%);
+    transition: 0.25s;
 }
 
 .glass-card-gen-box {
@@ -173,7 +221,7 @@ ul, li, a {
 
 .profile-img {
     width: 70px;
-    border: 3px solid var(--yellow-color);
+    border: 3px solid var(--honey-dew);
     border-radius: 50px;
 }
 
