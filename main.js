@@ -266,3 +266,73 @@ console.log(`Age: ${age}, Gender: ${gender}, House Number: ${houseNumber}, City:
 let {nestObj:{ nestOne: { nestTwo }}} = personInfo;
 
 console.log(nestTwo);
+
+
+// 🟡 temp remove img and use a random image api for image
+let [ cardForm, cardImg, cardName, cardJob, cardTw, cardGh, cardLi, cardWebsite, cardSubmitBtn, cardOutputBox, cardInfo ] = [
+    document.querySelector(".card-form"),
+    document.querySelector(".card-img").value,
+    document.querySelector(".card-name").value,
+    document.querySelector(".card-job").value,
+    document.querySelector(".card-twitter").value,
+    document.querySelector(".card-github").value,
+    document.querySelector(".card-linkedin").value,
+    document.querySelector(".card-website").value,
+    document.querySelector(".card-submit"),
+    document.querySelector(".inner-box-2"),
+    {},
+];
+
+let cardStructure = ``;
+
+console.log(cardForm);
+console.log(cardImg);
+console.log(cardName);
+console.log(cardJob);
+console.log(cardTw);
+console.log(cardGh);
+console.log(cardLi);
+console.log(cardWebsite);
+console.log(cardSubmitBtn);
+console.log(cardOutputBox);
+console.log(cardInfo);
+
+let submitCardForm = (e) => {
+    e.preventDefault();
+    let [ twHandle, ghHandle, liHandle ] = [ cardTw, cardGh, cardLi ];
+
+    cardInfo = {
+        myImg: cardImg,
+        myName: capTextFunc(cardName),
+        myJob: capTextFunc(cardJob),
+        mySocials: [`https://twitter.com/${twHandle}`, `https://github.com/${ghHandle}`, `https://linkedin.com/${liHandle}`],
+        myWebsite: cardWebsite
+    }
+
+    // ${cardInfo.}
+
+    cardStructure += `
+    <div class="glass-card">
+        <img src="${cardInfo.myImg}" alt="profile-img" class="profile-img">
+
+        <h4 class="person-name">Name: ${cardInfo.myName}</h4>
+
+        <p class="job">Job: ${cardInfo.myJob}</p>
+
+        <ul class="socials">
+            <li class="sc-item"><a href="${cardInfo.mySocials[0]}" class="sc-link twitter" target="_blank"><i class="fa-brands fa-twitter"></i> Tw</a></li>
+            <li class="sc-item"><a href="${cardInfo.mySocials[1]}" class="sc-link github" target="_blank"><i class="fa-brands fa-github"></i> Gh</a></li>
+            <li class="sc-item"><a href="${cardInfo.mySocials[2]}" class="sc-link linkedin" target="_blank"><i class="fa-brands fa-linkedin"></i> Li</a></li>
+        </ul>
+
+        <a href="${cardInfo.myWebsite}" class="website"><i class="fa-solid fa-link"></i> ${cardInfo.myName}'s Website</a>
+    </div>
+    ` 
+
+    cardOutputBox.innerHTML = cardStructure;
+
+    cardForm.reset()
+    console.log(cardInfo);
+}
+
+cardSubmitBtn.addEventListener("click", submitCardForm);
