@@ -269,9 +269,8 @@ console.log(nestTwo);
 
 
 // 🟡 temp remove img and use a random image api for image
-let [ cardForm, cardImg, cardName, cardJob, cardTw, cardGh, cardLi, cardWebsite, cardSubmitBtn, cardOutputBox, cardInfo ] = [
+let [ cardForm, cardName, cardJob, cardTw, cardGh, cardLi, cardWebsite, cardSubmitBtn, cardOutputBox, cardInfo ] = [
     document.querySelector(".card-form"),
-    document.querySelector(".card-img").value,
     document.querySelector(".card-name").value,
     document.querySelector(".card-job").value,
     document.querySelector(".card-twitter").value,
@@ -285,21 +284,20 @@ let [ cardForm, cardImg, cardName, cardJob, cardTw, cardGh, cardLi, cardWebsite,
 
 let cardStructure = ``;
 
-console.log(cardForm);
-console.log(cardImg);
-console.log(cardName);
-console.log(cardJob);
-console.log(cardTw);
-console.log(cardGh);
-console.log(cardLi);
-console.log(cardWebsite);
-console.log(cardSubmitBtn);
-console.log(cardOutputBox);
-console.log(cardInfo);
+let rand = () => {
+    return Math.floor(Math.random() * 100 + 1);
+} 
 
-let submitCardForm = (e) => {
+let submitCardForm = async (e) => {
     e.preventDefault();
     let [ twHandle, ghHandle, liHandle ] = [ cardTw, cardGh, cardLi ];
+
+    let pokemonAPI = `https://pokeapi.co/api/v2/pokemon/${rand()}/`
+    let res = await fetch(pokemonAPI)
+    let data = await res.json();
+    let { sprites: { front_default } } = data;
+
+    let cardImg = front_default;
 
     cardInfo = {
         myImg: cardImg,
@@ -311,7 +309,8 @@ let submitCardForm = (e) => {
 
     // ${cardInfo.}
 
-    cardStructure += `
+    // TODO: Info not showing on the cards 🔴
+    cardStructure = `
     <div class="glass-card">
         <img src="${cardInfo.myImg}" alt="profile-img" class="profile-img">
 
@@ -336,3 +335,29 @@ let submitCardForm = (e) => {
 }
 
 cardSubmitBtn.addEventListener("click", submitCardForm);
+
+
+// Async Await
+let getPokemonBtn = document.querySelector(".get-pokemon");
+let pokemonImg = document.querySelector(".pokemon-img");
+let pokemonCaption = document.querySelector(".pokemon-name");
+
+console.log(pokemonImg);
+console.log(pokemonCaption);
+
+getPokemonBtn.addEventListener("click", getData);
+
+async function getData() {
+    let pokemonAPI = `https://pokeapi.co/api/v2/pokemon/${rand()}/`
+    let res = await fetch(pokemonAPI)
+    let data = await res.json();
+    let { sprites: { front_default }, name } = data;
+    pokemonImg.setAttribute("src", front_default);
+    pokemonImg.style.backgroundColor = "#ffffff";
+    pokemonCaption.textContent = capTextFunc(name);
+    console.log(data);
+    console.log(`${capTextFunc(name)}: ${front_default}`)
+}
+
+// 🟡 use Promises
+// let something = new Promise(resolve, reject) {}
