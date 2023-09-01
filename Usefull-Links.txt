@@ -20,3 +20,7 @@ Colors:
 - https://htmlcolorcodes.com/
 - https://colorhunt.co/
 - https://coolors.co/
+
+Images:
+- https://www.svgrepo.com
+- https://undraw.co/
