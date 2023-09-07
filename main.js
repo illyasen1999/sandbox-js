@@ -369,6 +369,7 @@ async function getData() {
 // Promises
 // let something = new Promise(resolve, reject) {}
 // TODO: https://www.youtube.com/watch?v=DHvZLI7Db8E
+// Initailize the Promise
 let promise = new Promise((res, rej) => {
     let a = 1 + 1;
     if(a == 2){
@@ -378,6 +379,7 @@ let promise = new Promise((res, rej) => {
         rej("Failed")
     }
 })
+
 
 promise.then((msg) => { // run if sucess
     console.log(`Test: ${msg}`)
