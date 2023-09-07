@@ -177,7 +177,7 @@ ul, li, a {
     width: 100%;
 }
 
-.card-submit, .get-pokemon {
+.card-submit, .get-pokemon, .promise-pokemon {
     width: 200px;
     color: var(--light-color);
     background-color: var(--dark-color);
@@ -185,7 +185,8 @@ ul, li, a {
     border: 1.25px solid var(--react-blue);
 }
 
-.card-submit:hover, .get-pokemon:hover {
+.card-submit:hover, .get-pokemon:hover, .promise-pokemon:hover {
+    width: 200px;
     color: var(--dark-color);
     background-color: var(--react-blue);
     background: linear-gradient(330deg, var(--start-blue) 52%, var(--end-blue) 98%);
@@ -264,19 +265,25 @@ ul, li, a {
     gap: 1rem;
 }
 
+.pokemon-box-2 {
+    display: flex;
+    flex-direction: row;
+    gap: 1.25rem;
+}
+
 .pokemon {
     display: flex;
     flex-direction: column;
     text-align: center;
 }
 
-.pokemon-img {
+.pokemon-img, .pokemon-img-promise {
     width: 150px;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px; 
 }
 
-.pokemon-name {
+.pokemon-name, .pokemon-name-promise {
     padding: 10px 0px;
     background-color: var(--end-blue);
     color: var(--dark-color);

@@ -27,3 +27,9 @@ List of APIs
 - https://jikan.moe/
 
 https://flexiple.com/javascript/javascript-clock/
+
+Front-end Interview videos:
+- https://www.youtube.com/watch?v=j7CG7awlrQA
+- https://www.youtube.com/watch?v=ai1zmNO5Z3E
+- https://www.youtube.com/watch?v=uqII0AOW1NM
+- https://www.youtube.com/watch?v=YM-9nPLqezQ

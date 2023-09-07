@@ -366,5 +366,21 @@ async function getData() {
     }
 }
 
-// 🟡 use Promises
+// Promises
 // let something = new Promise(resolve, reject) {}
+// TODO: https://www.youtube.com/watch?v=DHvZLI7Db8E
+let promise = new Promise((res, rej) => {
+    let a = 1 + 1;
+    if(a == 2){
+        res("Sucess")
+    }
+    else {
+        rej("Failed")
+    }
+})
+
+promise.then((msg) => { // run if sucess
+    console.log(`Test: ${msg}`)
+}).catch((err) => { // run if failed
+    console.error(`Error: ${err}`)
+})
