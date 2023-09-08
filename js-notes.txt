@@ -1,5 +1,8 @@
 🟢 REMEMBER TO ALWAYS UPDATE YOUR GITHUB REPO 🟢
 
+Where I learned JS Traversy Media: 
+- https://www.youtube.com/playlist?list=PLillGF-RfqbbnEGy3ROiLWk7JMCuSyQtX
+
 Modern Javascript(Videos): 
     - Brad Traversy: https://www.youtube.com/watch?v=BI1o2H9z9fo
     - ByteGrad: https://www.youtube.com/watch?v=p4Y7sZwHGS8&list=PLK5U0tyd34tDLOnqdh-EiMBRl9C9cVpPJ&index=1
@@ -27,6 +30,8 @@ List of APIs
 - https://jikan.moe/
 
 https://flexiple.com/javascript/javascript-clock/
+
+CS50: HTML, CSS, JS: https://www.youtube.com/watch?v=alnzFK-4xMY&list=PLhQjrBD2T380F_inVRXMIHCqLaNUd7bN4&index=10
 
 Front-end Interview videos:
 - https://www.youtube.com/watch?v=j7CG7awlrQA

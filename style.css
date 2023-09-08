@@ -252,6 +252,29 @@ ul, li, a {
     color: var(--honey-dew);
 }
 
+.post-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    border: 2px solid var(--react-blue);
+    padding: 15px;
+    width: 30%;
+}
+
+.post-item {
+    border: 2px solid var(--azure-color);
+    padding: 10px;
+}
+
+.post-title-item {
+    color: var(--end-blue);
+}
+
+.post-body {
+    color: var(--mint-color);
+    font-size: 18px;
+}
+
 .pokemon-box {
     display: flex;
     flex-direction: row;

@@ -359,14 +359,62 @@ async function getData() {
         pokemonImg.style.backgroundColor = "#ffffff";
         pokemonCaption.textContent = capTextFunc(name);
         console.log(data);
-        console.log(`${capTextFunc(name)}: ${front_default}`)
+        console.log(`${capTextFunc(name)}: ${front_default}`);
     }
     catch (err) {
         console.error(err);
     }
 }
 
-// Promises
+// Callbacks
+let postList = document.querySelector(".post-list");
+const posts = [
+    { 
+        title: 'Post One',
+        body: 'This is post one.'
+    },
+    { 
+        title: 'Post Two',
+        body: 'This is post two.'
+    },
+]
+
+let getPosts = () => {
+    setTimeout(() => {
+        let output = ''
+        posts.forEach((post, index) => {
+            output += `
+            <lia class="post-item">
+                <h3 class="post-title">Title ${index + 1}: <span class="post-title-item">${post.title}</span></h3>
+                <p class="post-body">${post.body}</p>
+            </lia>
+            `
+        });
+        postList.innerHTML = output;
+    }, 1000)
+}
+
+// Integrate callback in the createPost function
+let createPost = (post, callback) => {
+    setTimeout(() => {
+        posts.push(post);
+        // getPosts will be ran after the new post is added
+        callback();
+    }, 2000);
+}
+
+// getPosts();
+
+// This wont work because getPost output already ran
+// For this to work use Callbacks
+// In this case the new post is added to the posts list then getPosts is ran after so the output will include the third post
+createPost({ title: "Post Three", body: "This is post three." }, getPosts);
+
+// Promises(Traversy Media: Async JS Crash Course - Callbacks, Promises, Async Await)
+// Code here...
+
+
+// Promises(Web Dev Simplefied: JavaScript Promises In 10 Minutes)
 // let something = new Promise(resolve, reject) {}
 // TODO: https://www.youtube.com/watch?v=DHvZLI7Db8E
 // Initailize the Promise
