@@ -366,7 +366,7 @@ async function getData() {
     }
 }
 
-// Promise + XMLHttpRequest
+// Promise + XMLHttpRequest (this can also be achieved with fetch)
 let promisePokemonBtn = document.querySelector(".promise-pokemon");
 let promisePokemonImg = document.querySelector(".pokemon-img-promise");
 let promisePokemonCaption = document.querySelector(".pokemon-name-promise");
