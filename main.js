@@ -366,7 +366,6 @@ async function getData() {
     }
 }
 
-// Callbacks
 let postList = document.querySelector(".post-list");
 const posts = [
     { 
@@ -379,6 +378,39 @@ const posts = [
     },
 ]
 
+// Callbacks
+// let getPosts = () => {
+//     setTimeout(() => {
+//         let output = ''
+//         posts.forEach((post, index) => {
+//             output += `
+//             <lia class="post-item">
+//                 <h3 class="post-title">Title ${index + 1}: <span class="post-title-item">${post.title}</span></h3>
+//                 <p class="post-body">${post.body}</p>
+//             </lia>
+//             `
+//         });
+//         postList.innerHTML = output;
+//     }, 1000)
+// }
+
+// // Integrate callback in the createPost function
+// let createPost = (post, callback) => {
+//     setTimeout(() => {
+//         posts.push(post);
+//         // getPosts will be ran after the new post is added
+//         callback();
+//     }, 2000);
+// }
+
+// getPosts();
+
+// This wont work because getPost output already ran
+// For this to work use Callbacks
+// In this case the new post is added to the posts list then getPosts is ran after so the output will include the third post
+// createPost({ title: "Post Three", body: "This is post three." }, getPosts);
+
+// Promises
 let getPosts = () => {
     setTimeout(() => {
         let output = ''
@@ -394,43 +426,57 @@ let getPosts = () => {
     }, 1000)
 }
 
-// Integrate callback in the createPost function
 let createPost = (post, callback) => {
-    setTimeout(() => {
-        posts.push(post);
-        // getPosts will be ran after the new post is added
-        callback();
-    }, 2000);
+    // Promise takes in Resolve and Reject
+    return new Promise((res, rej) => {
+        setTimeout(() => {
+            posts.push(post);
+
+            // Add some type of error checking
+            const err = false;
+
+            if(!err){
+                res()
+            }
+            else {
+                rej("Error")
+            }
+
+        }, 2000);
+    })
 }
 
-// getPosts();
+// If resolved, add .then() to add operations also add a .catch() to catch any errors
+// createPost({ title: "Post Three", body: "This is post three." })
+// .then(getPosts).catch((err) => console.error(err))
 
-// This wont work because getPost output already ran
-// For this to work use Callbacks
-// In this case the new post is added to the posts list then getPosts is ran after so the output will include the third post
-createPost({ title: "Post Three", body: "This is post three." }, getPosts);
+// Promise.all()
 
-// Promises(Traversy Media: Async JS Crash Course - Callbacks, Promises, Async Await)
-// Code here...
+// const prom1 = Promise.resolve("Promise 1 resolved");
+// const prom2 = 10;
+// const prom3 = new Promise((res, rej) => {
+//     setTimeout(res, 2000, "Promise 3 resolved")
+// })
+// // fetch() returns a promise and has to use 2 .then(): 1st .then() converts data into JSON and 2nd .then() you can grab the data and use it
+// const prom4 = fetch(`https://pokeapi.co/api/v2/pokemon/${rand()}/`)
+// .then((res) => res.json())
+// .then((pokemon) => pokemon.name.toUpperCase())
 
+// // Promise.all takes in an array of promises
+// Promise.all([prom1, prom2, prom3, prom4])
+// .then((val) => console.log(val))
 
-// Promises(Web Dev Simplefied: JavaScript Promises In 10 Minutes)
-// let something = new Promise(resolve, reject) {}
-// TODO: https://www.youtube.com/watch?v=DHvZLI7Db8E
-// Initailize the Promise
-let promise = new Promise((res, rej) => {
-    let a = 1 + 1;
-    if(a == 2){
-        res("Sucess")
+// Async/Await
+// async runs in the background waiting(await) for the inner code to be done processing
+// Async/Await usually is paired with the fetch() rather then using the .then()
+let init = async () => {
+    // also use a try/catch error handling to catch potential errors if something fails
+    try {
+        await createPost({ title: "Post Three", body: "This is post three." });
+        getPosts();
     }
-    else {
-        rej("Failed")
+    catch(err){
+        console.error(err)
     }
-})
-
-
-promise.then((msg) => { // run if sucess
-    console.log(`Test: ${msg}`)
-}).catch((err) => { // run if failed
-    console.error(`Error: ${err}`)
-})
+}
+init();
