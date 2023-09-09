@@ -555,3 +555,4 @@ function requestPokemon() {
 requestPokemon().then((data) => console.log(`XHR: ${data}`)).catch((err) => console.error(err))
 
 // TODO: Example on fetch
+// TODO: Review on ES6 and Array Methods

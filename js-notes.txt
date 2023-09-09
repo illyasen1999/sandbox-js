@@ -19,9 +19,10 @@ WebDevSimplified List of topics to learn Javascript:
 
 Book: JavaScript: The Good Parts
 
-TODO: Work on Promises and Async/Await 
+TODO: ES6 and Array Methods
 
-// TODO: Work on Promises and Async/Await
+🟡 Learn more about HTTP: https://developer.mozilla.org/en-US/docs/Web/HTTP
+
 // https://github.com/public-apis/public-apis
 
 List of APIs
