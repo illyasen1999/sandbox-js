@@ -339,7 +339,7 @@ let rand = () => {
     return Math.floor(Math.random() * 100 + 1);
 }
 
-// Async Await
+// Async Await + fetch
 let getPokemonBtn = document.querySelector(".get-pokemon");
 let pokemonImg = document.querySelector(".pokemon-img");
 let pokemonCaption = document.querySelector(".pokemon-name");
@@ -358,13 +358,56 @@ async function getData() {
         pokemonImg.setAttribute("src", front_default);
         pokemonImg.style.backgroundColor = "#ffffff";
         pokemonCaption.textContent = capTextFunc(name);
-        console.log(data);
+        // console.log(data);
         console.log(`${capTextFunc(name)}: ${front_default}`);
     }
     catch (err) {
         console.error(err);
     }
 }
+
+// Promise + XMLHttpRequest
+let promisePokemonBtn = document.querySelector(".promise-pokemon");
+let promisePokemonImg = document.querySelector(".pokemon-img-promise");
+let promisePokemonCaption = document.querySelector(".pokemon-name-promise");
+
+let getPokemonPromise = () => {
+    return new Promise((response, reject) => {
+        setTimeout(() => {
+            let pokemonAPI2 = `https://pokeapi.co/api/v2/pokemon/${rand()}/`
+            let xhr = new XMLHttpRequest;
+
+            // .open() parameters: method, url, async(optional)
+            xhr.open("GET", pokemonAPI2, true);
+
+            // .onload() initializes a request
+            xhr.onload = () => {
+                if(xhr.status == 200){
+                    // status 200 pertains to a successful response
+                    // then parses the response into a json format
+                    let pokemonItems = JSON.parse(xhr.response)
+                    response(pokemonItems.name);
+
+                    let { sprites: { front_default }, name } = pokemonItems;
+                    promisePokemonImg.setAttribute("src", front_default);
+                    promisePokemonImg.style.backgroundColor = "#ffffff";
+                    promisePokemonCaption.textContent = capTextFunc(name);
+                }
+            }
+
+            xhr.onerror = () => {
+                reject("Error Occured")
+            }
+
+            xhr.send();
+        }, 1000);
+    })
+}
+
+promisePokemonBtn.addEventListener('click', () => {
+    getPokemonPromise().then((data) => console.log(data)).catch((err) => console.error(err))
+})
+
 
 let postList = document.querySelector(".post-list");
 const posts = [
@@ -426,7 +469,7 @@ let getPosts = () => {
     }, 1000)
 }
 
-let createPost = (post, callback) => {
+let createPost = (post) => {
     // Promise takes in Resolve and Reject
     return new Promise((res, rej) => {
         setTimeout(() => {
@@ -480,3 +523,35 @@ let init = async () => {
     }
 }
 init();
+
+// XMLHttpRequest - old way of doing a fetch request
+function requestPokemon() {
+    return new Promise((res, rej) => {
+        let pokemonAPI2 = `https://pokeapi.co/api/v2/pokemon/${rand()}/`
+        let xhr = new XMLHttpRequest;
+
+        // .open() parameters: method, url, async(optional)
+        xhr.open("GET", pokemonAPI2, true);
+
+        // .onload() initializes a request
+        xhr.onload = () => {
+            if(xhr.status == 200){
+                // status 200 pertains to a successful response
+                // then parses the response into a json format
+                let pokemonItems = JSON.parse(xhr.response)
+                res(pokemonItems.name);
+            }
+        }
+
+        xhr.onerror = () => {
+            rej("Error Occured")
+        }
+
+        xhr.send();
+
+    });
+}
+
+requestPokemon().then((data) => console.log(`XHR: ${data}`)).catch((err) => console.error(err))
+
+// TODO: Example on fetch
