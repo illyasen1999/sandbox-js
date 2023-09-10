@@ -220,8 +220,6 @@ let removeItems = () => {
 
 removeArrayItemsButton.addEventListener("click", removeItems);
 
-// TODO: Create a Glassmorphism Profile Card Generator using objects. Check /img for idea illustration. Get idea from https://github.com/illyasen1999/Illyasen-Periodic-Table
-
 let personInfo = {
     myName: "Illyasen",
     age: 99,
@@ -524,7 +522,7 @@ let init = async () => {
 }
 init();
 
-// XMLHttpRequest - old way of doing a fetch request
+// XMLHttpRequest - old way of doing http requests
 function requestPokemon() {
     return new Promise((res, rej) => {
         let pokemonAPI2 = `https://pokeapi.co/api/v2/pokemon/${rand()}/`
@@ -554,5 +552,24 @@ function requestPokemon() {
 
 requestPokemon().then((data) => console.log(`XHR: ${data}`)).catch((err) => console.error(err))
 
-// TODO: Example on fetch
+// fetch() new way of doing http requests
+async function fetchPokemon(){
+    try{
+        // requesting data from an api GET is the default request
+        let pokemonAPI3 = await fetch(`https://pokeapi.co/api/v2/pokemon/${rand()}/`);
+        
+        // if for some reason the request fails(response code 400+/500+) log an warning/error
+        if(!pokemonAPI3.ok){
+            console.warn("Failed response")
+        }
+        let pokemonData = await pokemonAPI3.json();
+        return pokemonData.name;
+    }
+    catch(err) {
+        return err
+    }
+}
+
+fetchPokemon().then((data) => console.log(`Data from fetch: ${data}`)).catch((err) => console.error(err))
+
 // TODO: Review on ES6 and Array Methods

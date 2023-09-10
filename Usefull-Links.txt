@@ -24,3 +24,4 @@ Colors:
 Images:
 - https://www.svgrepo.com
 - https://undraw.co/
+- https://loading.io/

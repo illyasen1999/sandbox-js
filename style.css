@@ -275,6 +275,14 @@ ul, li, a {
     font-size: 18px;
 }
 
+.loading-box {
+    text-align: center;
+}
+
+.post-loading {
+    width: 200px;
+}
+
 .pokemon-box {
     display: flex;
     flex-direction: row;
