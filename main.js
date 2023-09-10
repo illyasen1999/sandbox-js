@@ -573,3 +573,29 @@ async function fetchPokemon(){
 fetchPokemon().then((data) => console.log(`Data from fetch: ${data}`)).catch((err) => console.error(err))
 
 // TODO: Review on ES6 and Array Methods
+
+// Default function parameters
+let getPersonInfo = (name, age = 18) => {
+    return `Hello im ${name} and im ${age}y/o`
+}
+
+let personOne = getPersonInfo("Illy", 32);
+console.log(`%c ${personOne}`, 'color: yellow')
+
+let blockScope = () => {
+    for(let i = 0; i < 5; i++){
+        // let - a variable that is scope blocked and cant be re-assigned outside of its scope
+        let count = i;
+
+        // var -  a variable that is not scope blocked and can be re-assigned outside of its scope
+        var count2 = i;
+    }
+    // this doesnt work since it cant access count
+    // console.log(count)
+    // this works since its not scope blocked
+    console.log(count2)
+}
+
+// const - variables that dont change/cant be re-assigned
+const PIE = 3.14;
+
