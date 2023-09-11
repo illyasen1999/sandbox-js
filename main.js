@@ -257,14 +257,6 @@ personInfo.introduce();
 
 personInfo.address.houseNumber = "#991"
 
-let { age, gender, address: {houseNumber}, address: {city} } = personInfo;
-
-console.log(`Age: ${age}, Gender: ${gender}, House Number: ${houseNumber}, City: ${city}`);
-
-let {nestObj:{ nestOne: { nestTwo }}} = personInfo;
-
-console.log(nestTwo);
-
 let [
     cardForm,
     cardNameInput,
@@ -570,17 +562,15 @@ async function fetchPokemon(){
     }
 }
 
-fetchPokemon().then((data) => console.log(`Data from fetch: ${data}`)).catch((err) => console.error(err))
-
-// TODO: Review on ES6 and Array Methods
+fetchPokemon().then((data) => console.log(`Data from fetch: ${data}`)).catch((err) => console.error(err));
 
 // Default function parameters
 let getPersonInfo = (name, age = 18) => {
     return `Hello im ${name} and im ${age}y/o`
 }
 
-let personOne = getPersonInfo("Illy", 32);
-console.log(`%c ${personOne}`, 'color: yellow')
+let personOne = getPersonInfo("Illy", 100);
+console.log(`%c ${personOne}`, 'color: yellow');
 
 let blockScope = () => {
     for(let i = 0; i < 5; i++){
@@ -593,9 +583,33 @@ let blockScope = () => {
     // this doesnt work since it cant access count
     // console.log(count)
     // this works since its not scope blocked
-    console.log(count2)
+    console.log(count2);
 }
 
 // const - variables that dont change/cant be re-assigned
 const PIE = 3.14;
 
+// ...spread operator - appending an old list to a new list
+let listNumOne = [1,2,3];
+let listNumTwo = [4,5,6, ...listNumOne];
+
+// Array Destructuring - placing values of a list into variables based on indexes
+let [a, b, c] = listNumOne;
+console.log(a);
+console.log(b);
+// Setting a default value to the variable
+console.log(c != undefined ? c : 0);
+
+// Object Destructuring - extracting variables from an object into individual variables
+let { age, gender, address: {houseNumber}, address: {city} } = personInfo;
+
+console.log(`Age: ${age}, Gender: ${gender}, House Number: ${houseNumber}, City: ${city}`);
+
+let {nestObj:{ nestOne: { nestTwo }}} = personInfo;
+
+console.log(nestTwo);
+
+// Template literals - replacing a string with a variable
+console.log(`New List: ${listNumTwo}`);
+
+// TODO: ES6 Modules and Array Methods
