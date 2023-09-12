@@ -621,26 +621,45 @@ mInfo.forEach((millie) => {
     console.log(millie);
 })
 
-// High Order Array Functions: Map, Filter, Reduce, Sort
+// Simple List Item Generator
+let createListItem = (innerSentence) => {
+    let li = document.createElement("li");
+    li.innerHTML = innerSentence;
+    return li;
+}
+
+// Common Array Functions: Map, Filter, Reduce, Sort
 // Array Method: Map - transforming data from an array returning a new array of data
+
+let mapList = document.querySelector(".map");
 mInfo.map((item) => {
     let subsX5 = item.subsPrev * 5;
+    mapList.appendChild(createListItem(`Previous Subs x 5: ${item.subsPrev} -> ${subsX5}`));
     console.log(`Map: Subs x 5: ${subsX5}`);
 });
 
 // Array Method: Filter - get data based on a filtered condition
+let filterList = document.querySelector(".filter");
+console.log(filterList)
 mInfo.filter((millie) => {
-    if(millie.subs > 21000){
+    if(millie.subsPrev < 21000){
+        filterList.appendChild(createListItem(`Subs below 21k: ${millie.subsPrev}`));
         console.log(`Filter: Subs ${millie.subsPrev}`);
     }
 });
 
 // Array Method: Reduce - reduce all info down to a single output
+let reduceOutput = document.querySelector(".reduce")
 let currentTotalSubs = mInfo.reduce((total, subs) => (total + subs.subsCur), 0);
+reduceOutput.textContent = `All current total subs: ${currentTotalSubs}`
 console.log(`All current total subs: ${currentTotalSubs}`);
 
 // Array Method: Sort - sort out values based on a condition
+let sortOutput = document.querySelector(".sort");
 let sortedCurSubs = mInfo.sort((a, b) => a.subsCur - b.subsCur);
+let preTag = document.createElement("pre");
+preTag.innerText = JSON.stringify(sortedCurSubs, undefined, 4);
+sortOutput.appendChild(preTag)
 
 console.log("Subs Ascending: ");
 console.log(sortedCurSubs);
