@@ -622,7 +622,7 @@ mInfo.forEach((millie) => {
 })
 
 // High Order Array Functions: Map, Filter, Reduce, Sort
-// Array Method: Map - transforming data from an array
+// Array Method: Map - transforming data from an array returning a new array of data
 mInfo.map((item) => {
     let subsX5 = item.subsPrev * 5;
     console.log(`Map: Subs x 5: ${subsX5}`);
@@ -635,4 +635,12 @@ mInfo.filter((millie) => {
     }
 });
 
-// TODO: Array Method: Reduce and Sort
+// Array Method: Reduce - reduce all info down to a single output
+let currentTotalSubs = mInfo.reduce((total, subs) => (total + subs.subsCur), 0);
+console.log(`All current total subs: ${currentTotalSubs}`);
+
+// Array Method: Sort - sort out values based on a condition
+let sortedCurSubs = mInfo.sort((a, b) => a.subsCur - b.subsCur);
+
+console.log("Subs Ascending: ");
+console.log(sortedCurSubs);
