@@ -542,7 +542,7 @@ function requestPokemon() {
     });
 }
 
-requestPokemon().then((data) => console.log(`XHR: ${data}`)).catch((err) => console.error(err))
+// requestPokemon().then((data) => console.log(`XHR: ${data}`)).catch((err) => console.error(err))
 
 // fetch() new way of doing http requests
 async function fetchPokemon(){
@@ -562,7 +562,7 @@ async function fetchPokemon(){
     }
 }
 
-fetchPokemon().then((data) => console.log(`Data from fetch: ${data}`)).catch((err) => console.error(err));
+// fetchPokemon().then((data) => console.log(`Data from fetch: ${data}`)).catch((err) => console.error(err));
 
 // Default function parameters
 let getPersonInfo = (name, age = 18) => {
@@ -609,7 +609,30 @@ let {nestObj:{ nestOne: { nestTwo }}} = personInfo;
 
 console.log(nestTwo);
 
-// Template literals - replacing a string with a variable
+// Template literals - replacing a string with a variable that is placed inside this -> ${variable}
 console.log(`New List: ${listNumTwo}`);
 
-// TODO: ES6 Modules and Array Methods
+// ES6 Modules Import/Export - import and export separate code from files using import and export
+// for this to work you need to change the html/js src script to a module
+import { mInfo } from "./millie-info.js";
+
+// Array Method: forEach - loop through array elements
+mInfo.forEach((millie) => {
+    console.log(millie);
+})
+
+// High Order Array Functions: Map, Filter, Reduce, Sort
+// Array Method: Map - transforming data from an array
+mInfo.map((item) => {
+    let subsX5 = item.subsPrev * 5;
+    console.log(`Map: Subs x 5: ${subsX5}`);
+});
+
+// Array Method: Filter - get data based on a filtered condition
+mInfo.filter((millie) => {
+    if(millie.subs > 21000){
+        console.log(`Filter: Subs ${millie.subsPrev}`);
+    }
+});
+
+// TODO: Array Method: Reduce and Sort
