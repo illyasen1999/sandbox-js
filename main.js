@@ -92,65 +92,81 @@ randBtn.addEventListener("click", () => {
 // TODO: Make the date and time update in real time
 let currentTimeEl = document.querySelector(".time-el");
 let currentDateEl = document.querySelector(".date-el");
-let dt = new Date();
+
 const daysInWords = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Satuday"];
 const monthsInWords = ["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-let date = dt.getDate();
-let time = dt.getTime();
-let day = dt.getDay();
-let month = dt.getMonth();
-let hours = dt.getHours();
-let minutes = dt.getMinutes();
-let seconds = dt.getSeconds();
-let year = dt.getFullYear();
-let currentDay = daysInWords[day];
-let currentMonth = monthsInWords[month];
 
-let updateDateAndTime = () => {
-    // TODO: Try to make numbers be in 00 format
-    seconds = seconds + 1;
-    if(seconds > 59){
-        seconds = 0;
-        minutes = minutes + 1
-    }
-    if(minutes > 59){
-        minutes = 0;
-        hours = hours + 1
-    }
-    if(hours > 23) {
-        hours = 0
-    }
-    // console.log(seconds);
-    // console.log(`${hours}:${minutes}:${seconds}`)
+// Old Solution
+// let updateDateAndTime = () => {
+//     seconds = seconds + 1;
+//     if(seconds > 59){
+//         seconds = 0;
+//         minutes = minutes + 1
+//     }
+//     if(minutes > 59){
+//         minutes = 0;
+//         hours = hours + 1
+//     }
+//     if(hours > 23) {
+//         hours = 0
+//     }
+//     console.log(seconds);
+//     console.log(`${hours}:${minutes}:${seconds}`)
 
-    currentTimeEl.textContent = `${hours}:${minutes}:${seconds} AM`
-    currentDateEl.textContent = `${currentDay}, ${currentMonth} ${date}, ${year}`
-}
-setInterval(updateDateAndTime, 1000)
+//     currentTimeEl.textContent = `${hours}:${minutes}:${seconds} AM`
+//     currentDateEl.textContent = `${currentDay}, ${currentMonth} ${date}, ${year}`
+// }
+// setInterval(updateDateAndTime, 1000)
 
-console.log(`${currentDay}, ${currentMonth} ${date}, ${year}`)
+// console.log(`${currentDay}, ${currentMonth} ${date}, ${year}`)
 // console.log(`${hours}:${minutes}:${seconds}`)
 
-// https://flexiple.com/javascript/javascript-clock/
-// setInterval vs setTimeout
+// New Solutions
+// SRC/CREDITS: https://github.com/C-ZLTV/counter-js-basics/tree/master
+// let timeRunner = () => {
+//     let TM = new Date();
+//     let hours = TM.getHours().toString().padStart(2, "0");
+//     let minutes = TM.getMinutes().toString().padStart(2, "0");
+//     let seconds = TM.getSeconds().toString().padStart(2, "0");
+//     return currentTimeEl.innerText = `${hours}:${minutes}:${seconds} AM`
+// };
 
-// let testClock = () => {
-//     let session = "AM";
+let dateRunner = () => {
+    let DT = new Date();
+    let date = DT.getDate().toString().padStart(2, "0");
+    let day = DT.getDay();
+    let month = DT.getMonth();
+    let year = DT.getFullYear();
+    let currentDay = daysInWords[day];
+    let currentMonth = monthsInWords[month];
+    return currentDateEl.textContent = `${currentDay}, ${currentMonth} ${date}, ${year}`
+};
 
-//     if(hours > 12) {
-//         session = "PM"
-//     }
+// SRC/CREDITS: https://flexiple.com/javascript/javascript-clock/
 
-//     hours = (hours < 10) ? "0" + hours : hours;
-//     minutes = (minutes < 10) ? "0" + minutes : minutes;
-//     seconds = (seconds < 10) ? "0" + seconds : seconds;
+let testClock = () => {
+    let TM = new Date();
+    let hours = TM.getHours();
+    let minutes = TM.getMinutes();
+    let seconds = TM.getSeconds();
 
-//     let time = `${hours}:${minutes}:${seconds} ${session}`;
-//     console.log(time);
-//     let t = setTimeout(testClock, 1000);
-// }
+    let session = "AM";
 
-// testClock();
+    if(hours > 12) {
+        session = "PM"
+    }
+
+    hours = (hours < 10) ? "0" + hours : hours;
+    minutes = (minutes < 10) ? "0" + minutes : minutes;
+    seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+    let time = `${hours}:${minutes}:${seconds} ${session}`;
+    return currentTimeEl.textContent = time
+    // setTimeout(testClock, 1000); // can use recursion
+}
+setInterval(testClock, 1000);
+// setInterval(timeRunner, 1000);
+setInterval(dateRunner, 1000);
 
 // Array
 let arrayForm = document.querySelector(".array-form")
