@@ -12,6 +12,7 @@ Design inspirations:
 - https://uidesigndaily.com/
 - https://www.awwwards.com/
 - https://www.siteinspire.com/
+- https://www.frontendmentor.io/
 
 BEM Naming Convention: 
 - https://getbem.com/

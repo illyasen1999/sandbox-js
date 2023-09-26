@@ -569,6 +569,7 @@ async function fetchPokemon(){
         // if for some reason the request fails(response code 400+/500+) log an warning/error
         if(!pokemonAPI3.ok){
             console.warn("Failed response")
+            throw new Error("Error: Failed to response")
         }
         let pokemonData = await pokemonAPI3.json();
         return pokemonData.name;
