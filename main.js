@@ -465,10 +465,10 @@ let getPosts = () => {
         let output = ''
         posts.forEach((post, index) => {
             output += `
-            <lia class="post-item">
+            <li class="post-item">
                 <h3 class="post-title">Title ${index + 1}: <span class="post-title-item">${post.title}</span></h3>
                 <p class="post-body">${post.body}</p>
-            </lia>
+            </li>
             `
         });
         postList.innerHTML = output;
@@ -621,6 +621,7 @@ let { age, gender, address: {houseNumber}, address: {city} } = personInfo;
 
 console.log(`Age: ${age}, Gender: ${gender}, House Number: ${houseNumber}, City: ${city}`);
 
+// Deeply nested object
 let {nestObj:{ nestOne: { nestTwo }}} = personInfo;
 
 console.log(nestTwo);
@@ -646,7 +647,6 @@ let createListItem = (innerSentence) => {
 
 // Common Array Functions: Map, Filter, Reduce, Sort
 // Array Method: Map - transforming data from an array returning a new array of data
-
 let mapList = document.querySelector(".map");
 mInfo.map((item) => {
     let subsX5 = item.subsPrev * 5;

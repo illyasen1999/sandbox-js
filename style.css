@@ -258,7 +258,7 @@ ul, li, a {
     gap: 1.25rem;
     border: 2px solid var(--react-blue);
     padding: 15px;
-    width: 30%;
+    width: 50%;
 }
 
 .post-item {
@@ -280,7 +280,7 @@ ul, li, a {
 }
 
 .post-loading {
-    width: 200px;
+    width: 100px;
 }
 
 .pokemon-box {
@@ -339,7 +339,7 @@ ul, li, a {
     width: 300px;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
     input, button {
         width: 25%;
     }
